@@ -16,7 +16,7 @@ setup(
     author=authors,
     author_email=email,
     license="MIT",
-    packages=["vantetider_scraper"],
+    packages=["vantetider"],
     zip_safe=False,
     install_requires=[
         "pandas",
@@ -26,6 +26,6 @@ setup(
     test_suite="nose.collector",
     tests_require=["nose"],
     include_package_data=True,
-    download_url="https://github.com/jplusplus/skrejperpark/archive/%s.tar.gz"
+    download_url="https://github.com/jplusplus/vantetider-scraper/archive/%s.tar.gz"
                  % version,
 )
