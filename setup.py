@@ -6,7 +6,7 @@ def readme():
     with open("README.rst") as f:
         return f.read()
 
-version = "0.1.2"
+version = "0.1.3"
 
 setup(
     name="vantetider_scraper",
@@ -20,9 +20,9 @@ setup(
     packages=["vantetider"],
     zip_safe=False,
     install_requires=[
-        "pandas",
         "requests",
-        "requests_cache"
+        "requests_cache",
+        "BeautifulSoup",
     ],
     test_suite="nose.collector",
     tests_require=["nose"],
