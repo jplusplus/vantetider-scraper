@@ -245,6 +245,17 @@ class VantetiderDataset(Dataset):
         """
         return self.dimensions["year"].allowed_values
 
+    @property
+    def latest_timepoint(self):
+        """Get the latest available year and period.
+
+        This method will have to be re-written to support pages with ajax load
+        """
+        return {
+            "year": self.dimensions["year"].default_value,
+            "period": self.dimensions["period"].default_value,
+        }
+
 
     def _get_region_slug(self, id_or_label):
         """ Get the regional slug to be used in url

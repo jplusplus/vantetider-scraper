@@ -29,6 +29,14 @@ class TestVantetider(TestCase):
                 years = dataset.dimensions["year"].allowed_values
                 self.assertTrue(len(years) > 0)
 
+    def test_latest_timepoint(self):
+        dataset = self.scraper.get("Overbelaggning")
+
+        latest_timepoint = dataset.latest_timepoint
+        self.assertTrue(isinstance(latest_timepoint, dict))
+        self.assertTrue("year" in latest_timepoint)
+
+
     def test_get_radio_values(self):
         dataset = self.scraper.get("Overbelaggning")
         values = dataset.dimensions["type_of_overbelaggning"].allowed_values
