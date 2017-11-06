@@ -1,13 +1,15 @@
 
-This is a scraper for statistical data from http://www.vantetider.se built on top of the (https://github.com/jplusplus/statscraper)[Statscraper package].
+This is a scraper for statistical data from http://www.vantetider.se built on top of the `Statscraper package <https://github.com/jplusplus/statscraper>`.
 
-## Install
+Install
+-------
 
   pip install -r requirements.txt
 
-The scraper has to do a lot of requests and uses (https://pypi.python.org/pypi/requests-cache)[requests-cache] to store queries.
+The scraper has to do a lot of requests and uses `requests-cache <https://pypi.python.org/pypi/requests-cache>` to store queries.
 
-## Example usage
+Example usage
+-------------
 
 .. code:: python
 
@@ -73,14 +75,16 @@ Practical application, using dataset.py for storege.
           data = res.list_of_dicts
           table.insert_many(data)
 
-## TODO
+TODO
+----
 
 - Implement scraping of "Aterbesok", "Undersokningar", "BUPdetalj", "BUP".
 - Enable querying on label names on all dimensions
 - Add more allowed values to `vantetider/allowed_values.py`
 - Make requests-cache optional.
 
-## Devlop
+Devlop
+------
 
 Run tests:
 
