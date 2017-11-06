@@ -1,20 +1,23 @@
 # encoding: utf-8
 from setuptools import setup
-from version import version, name, authors, email, short_desc
 
 def readme():
     """Import README for use as long_description."""
     with open("README.rst") as f:
         return f.read()
 
+version = "0.1"
+
 setup(
-    name=name,
+    name="vantetider_scraper",
     version=version,
-    description=short_desc,
+    description="""
+        A scraper of statistical data from Vantetider.se built on top of Statscraper.,
+    """,
     long_description=readme(),
     url="https://github.com/jplusplus/vantetider-scraper",
-    author=authors,
-    author_email=email,
+    author="Jens Finnäs",
+    author_email="jens.finnas@gmail.com",
     license="MIT",
     packages=["vantetider"],
     zip_safe=False,
