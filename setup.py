@@ -6,14 +6,12 @@ def readme():
     with open("README.rst") as f:
         return f.read()
 
-version = "0.1"
+version = "0.1.2"
 
 setup(
     name="vantetider_scraper",
     version=version,
-    description="""
-        A scraper of statistical data from Vantetider.se built on top of Statscraper.,
-    """,
+    description="A scraper of statistical data from Vantetider.se built on top of Statscraper.",
     long_description=readme(),
     url="https://github.com/jplusplus/vantetider-scraper",
     author="Jens Finnäs",
