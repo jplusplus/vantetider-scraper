@@ -14,3 +14,7 @@ tests: clean-pyc
 
 test: clean-pyc
 	PYTHONPATH=. py.test $(file) --verbose
+
+deploy:
+	# Deploy to pypi
+	python setup.py sdist upload -r pypi
