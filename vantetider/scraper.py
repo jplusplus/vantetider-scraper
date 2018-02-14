@@ -404,12 +404,18 @@ class VantetiderDimension(Dimension):
         """
         if not hasattr(self, "_default_value"):
             if self.elem_type == "select":
-                try:
-                    # Get option marked "selected"
-                    def_value = get_option_value(self.elem.select_one("[selected]"))
-                except AttributeError:
-                    # ...or if that one doesen't exist get the first option
-                    def_value = get_option_value(self.elem.select_one("option"))
+                # Hack: for some reason the preselected perdiod is not always
+                # the latest, which we prefer to consider default value
+                if self.id == "period":
+                    last_option = self.elem.select("option")[-1]
+                    def_value = get_option_value(last_option)
+                else:
+                    try:
+                        # Get option marked "selected"
+                        def_value = get_option_value(self.elem.select_one("[selected]"))
+                    except AttributeError:
+                        # ...or if that one doesen't exist get the first option
+                        def_value = get_option_value(self.elem.select_one("option"))
 
 
             elif self.elem_type == "checkbox":
