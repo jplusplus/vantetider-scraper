@@ -69,7 +69,7 @@ class TestVantetider(TestCase):
     def test_multi_period_query(self):
         """ Query multiple periods and years at once
         """
-        dataset = self.scraper.get("PrimarvardBesok")
+        dataset = self.scraper.get("Overbelaggning")
         res = dataset.fetch({
             "region": ["Gotland"],
             "year": ["2017", "2016"],

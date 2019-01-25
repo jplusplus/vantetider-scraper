@@ -11,7 +11,7 @@ requests_cache.install_cache()
 from statscraper import (BaseScraper, Collection, DimensionValue,
                          Dataset, Dimension, Result)
 
-BASE_URL = u"http://www.vantetider.se/Kontaktkort/"
+BASE_URL = u"https://www.vantetider.se/Kontaktkort/"
 NOT_IMPLEMENTED_DATASETS = [
     # Uses query params to populate search:
     "Aterbesok", "Undersokningar", "Utskrivningsklara",
@@ -221,7 +221,7 @@ class VantetiderDataset(Dataset):
             region_slug = "Sveriges"
         else:
             region_slug = self._get_region_slug(region)
-        return BASE_URL + region_slug + "/" + self.id
+        return BASE_URL + region_slug + "/" + self.id + "/"
 
     @property
     def html(self):
@@ -334,7 +334,6 @@ class VantetiderDataset(Dataset):
 
             row.pop("value", None)
             row.pop("region_or_unit", None)
-
             for dim in self.dimensions:
                 if dim.id not in row:
                     row[dim.id] = current_selection[dim.id][1] # gets label
