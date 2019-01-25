@@ -17,4 +17,5 @@ test: clean-pyc
 
 deploy:
 	# Deploy to pypi
-	python setup.py sdist upload -r pypi
+	python setup.py sdist
+	twine upload dist/* --skip-existing
