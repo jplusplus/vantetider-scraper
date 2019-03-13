@@ -14,10 +14,13 @@ from statscraper import (BaseScraper, Collection, DimensionValue,
 BASE_URL = u"https://www.vantetider.se/Kontaktkort/"
 NOT_IMPLEMENTED_DATASETS = [
     # Uses query params to populate search:
-    "Aterbesok", "Undersokningar", "Utskrivningsklara",
+    "Aterbesok", "Undersokningar", "Utskrivningsklara", "Forstalinjen",
 
     # Table parsing fails on:
     "BUPdetalj", "BUP",
+
+    # Follows different url structure
+    "resultatmedicinsk-bedomning",
 
     ]
 
@@ -286,6 +289,7 @@ class VantetiderDataset(Dataset):
             "Jamtland-Harjedalens": "Jamtlands",
             "Rikets": "Sveriges",
             "Alla-landstings": "Sveriges",
+            "Alla-regioner": "Sveriges",
         }
         if slug in EXCEPTIONS:
             slug = EXCEPTIONS[slug]
