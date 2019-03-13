@@ -6,7 +6,7 @@ def readme():
     with open("README.rst") as f:
         return f.read()
 
-version = "0.1.7"
+version = "0.1.8"
 
 setup(
     name="vantetider_scraper",
