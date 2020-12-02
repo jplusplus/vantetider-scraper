@@ -79,3 +79,14 @@ class TestVantetider(TestCase):
         self.assertGreater(df.shape[0],0)
         self.assertEqual(len(df.year.unique()),2)
         self.assertEqual(len(df.period.unique()),2)
+
+    def test_fetch_specialiserad_operation(self):
+        dataset = self.scraper.get("SpecialiseradOperation")
+        res = dataset.fetch({
+            "region": ["Stockholm"],
+            "year": ["2020"],
+            "period": ["Januari"],
+            "spec_services": ["11"],
+            })
+        df = res.pandas
+        df["spec_services"].unique().tolist() == ["Gynekologi"]

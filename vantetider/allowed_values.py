@@ -26,3 +26,21 @@ type_of_overbelaggning = [
     ("0", "Somatik"),
     ("1", "Psykiatri"),
 ]
+
+# Used by "SpecialiseradOperation" dataset
+type_of_spec_services = [    
+    ("11", "Gynekologi"),
+    ("5", "Handkirurgi"),
+    ("817", "Hjärtsjukvård"),
+    ("6", "Kirurgi"),
+    ("824", "Kärlkirurgi"),
+    ("650", "Neurokirurgi"),
+    ("7", "Ortopedi"),
+    ("10", "Plastikkirurgi"),
+    ("14", "Ryggkirurgi"),
+    ("9", "Thoraxkirurgi"),
+    ("8", "Urologi"),
+    ("984", "Utprovning av hörapparat"),
+    ("12", "Ögon"),
+    ("13", "Öron, näs och hals"),
+]
