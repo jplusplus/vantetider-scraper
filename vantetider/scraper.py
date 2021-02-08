@@ -22,6 +22,8 @@ NOT_IMPLEMENTED_DATASETS = [
     # Follows different url structure
     "resultatmedicinsk-bedomning",
 
+    "resultatcovid-19-statistiksida",
+
     ]
 
 class VantetiderScraper(BaseScraper):
@@ -179,6 +181,7 @@ class VantetiderScraper(BaseScraper):
         """
         self.log.info(u"/GET {}".format(url))
         r = requests.get(url)
+
         if hasattr(r, 'from_cache'):
             if r.from_cache:
                 self.log.info("(from cache)")
@@ -308,7 +311,7 @@ class VantetiderDataset(Dataset):
         else:
             try:
                 html = self.scraper._post_html(url, payload=payload)
-            except HTTPError, e:
+            except HTTPError as e:
                 if e.response.status_code == 500:
                     self.scraper.log.warning(u"Unable to get {} with {}".format(url, payload))
                     return []
@@ -346,7 +349,7 @@ class VantetiderDataset(Dataset):
         return data
 
     def _get_current_selection(self, html):
-        if isinstance(html, str):
+        if isinstance(html, str) or isinstance(html, bytes):
             html = BeautifulSoup(html, "html.parser")
         current_selection = {}
         for dim in self.dimensions:
@@ -433,22 +436,22 @@ class PrintLogger():
     """
 
     def log(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
     def debug(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
     def info(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
     def warning(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
     def error(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
     def critical(self, msg, *args, **kwargs):
-        print msg
+        print(msg)
 
 
 # UTILS
@@ -604,6 +607,8 @@ class Sheet(object):
         """
         self.values_by_row = values
         self.values = flatten(values)
+        rows = list(rows)
+        cols = list(cols)
 
         if len(rows) * len(cols) == len(self.values):
             msg = ("Error initing sheet. Factor of n rows ({})",
